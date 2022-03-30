@@ -1,22 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { idHelpers } from "./library/helpers/index";
+import RepositoryLink from "./components/RepositoryLink";
+import RandomValue from "./components/RandomValue";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        
         <h1>
           Example React App
         </h1>
-        <a
-          className="App-link"
-          href="https://github.com/aletta-bookwitch/example_react_app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub Repo
-        </a>
+
+        <p>Your unique ID is: {idHelpers.generateId()}</p>
+        <RepositoryLink />
+        <RandomValue />
       </header>
     </div>
   );

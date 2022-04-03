@@ -10,15 +10,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
-        <h1>
-          Example React App
-        </h1>
+        <h1>Example React App</h1>
 
         <p>Your unique ID is: {idHelpers.generateId()}</p>
-        <RepositoryLink />
-        <p>
-        <RandomValue />
-        </p>
+        <p><RepositoryLink /></p>
+        <p><RandomValue /></p>
       </header>
     </div>
   );

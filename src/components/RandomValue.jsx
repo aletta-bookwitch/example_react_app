@@ -1,8 +1,14 @@
 import { arrayHelpers } from "../library/helpers";
 
 function RandomValue() {
+  const value = arrayHelpers.getRandomElement([1, 2, 3]);
+  const isOdd = value % 2 === 1;
+  const element = isOdd ? <span>is odd</span> : <span>is even</span>;
+  
   return (
-    <div>{arrayHelpers.getRandomElement([1, 2, 3])}</div>
+    <div>
+      {value} {element}
+    </div>
   );
 }
 

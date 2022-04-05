@@ -1,15 +1,11 @@
 import { arrayHelpers } from "../library/helpers";
 
-function RandomValue() {
-  const value = arrayHelpers.getRandomElement([1, 2, 3]);
-  const isOdd = value % 2 === 1;
-  const element = isOdd ? <span>is odd</span> : <span>is even</span>;
-  
+export function RandomValue(props) {
+  const value = arrayHelpers.getRandomElement(props.values);
+
   return (
     <div>
-      {value} {element}
+      {value} is {value % 2 === 1 ? "odd" : "even"}
     </div>
   );
 }
-
-export default RandomValue;

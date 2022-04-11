@@ -1,10 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ABCQuestion } from "./ABCQuestion";
 import { ABQuestion } from "./ABQuestion";
 import { FreeInputQuestion } from "./FreeInputQuestion";
 
-export function Quiz() {
-  const[state, setState] = useState({});
+const questions = [
+  {
+    text: "Enter your name",
+    id: "name",
+  },
+  
+  {
+    text: "Enter your age",
+    id: "age",
+  },
+  
+  {
+    text: "Enter your favourite food",
+    id: "food",
+  },
+
+  {
+    text: "Enter your city",
+    id: "city",
+  },
+];
+
+export function Quiz(props) {
+  const [state, setState] = useState({});
+
+  useEffect(() => {
+    props.onStateChange();
+  }, [state]);
 
   const handleAnswer = (id, choiceValue) => {
     setState((currentState) => ({
@@ -13,14 +39,24 @@ export function Quiz() {
     }));
   };
 
+  const handleSubmit = () => {
+    props.onSubmit(state, props.id);
+  };
+
+  const questionsMap = questions.map((question, index) => {
+    return (
+      <FreeInputQuestion
+        key={index}
+        id={`freeInputQuestion${index}`}
+        text={question}
+        onKeyUp={handleAnswer}
+      />
+    );
+  });
+
   return (
     <div>
-      <div>
-        {state.question1}, {state.question2}, {state.question3}
-      </div>
-
-      <FreeInputQuestion id="question3" text="Enter your name" onKeyUp={handleAnswer} />
-      
+      {questionsMap}
       <ABQuestion
         id="question1"
         question="Make the right choice"
@@ -30,7 +66,6 @@ export function Quiz() {
         buttonBValue="Red"
         onChoice={handleAnswer}
       />
-
       <ABCQuestion
         id="question2"
         question="Make the right choice"
@@ -42,6 +77,7 @@ export function Quiz() {
         buttonCValue="Pink"
         onChoice={handleAnswer}
       />
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }

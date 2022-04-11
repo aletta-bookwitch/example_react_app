@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function LoginForm () {
+export function LoginForm(props) {
   const [state, setState] = useState({});
 
   const handleChange = (event) => {
@@ -9,26 +9,26 @@ export function LoginForm () {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submit", state);
+    props.onLogin(state);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
-      <label htmlFor="">
-        Name:
-        <input type="text" id="name" name="name" />
-      </label>
-      </div>
-      <div>
-        <label htmlFor="email">
-          Email:
-          <input type="email" name="email" id="email" />
+        <label htmlFor="name">
+          Name:
+          <input type="text" id="name" name="name" onChange={handleChange} />
         </label>
       </div>
+      <dir>
+        <label htmlFor="email">
+          Email:
+          <input type="email" name="email" id="email" onChange={handleChange} />
+        </label>
+      </dir>
       <div>
         <button type="submit">Sign in</button>
       </div>
     </form>
-  )
+  );
 }

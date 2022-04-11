@@ -1,7 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { idHelpers } from "./library/helpers";
-import { RandomValue } from "./components/RandomValue";
 import { RepositoryLink } from "./components/RepositoryLink";
 import { Quiz } from "./components/Quiz";
 import { useState } from "react";
@@ -20,14 +18,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Example React App</h1>
-        <p>Your unique ID is: {idHelpers.generateId()}</p>
-        <RepositoryLink>View Repository</RepositoryLink>
+        <h4>Your action count is: {actionCount}</h4>
+        <p><RepositoryLink>View Repository</RepositoryLink></p>
         <LoginForm onLogin={handleLogin} />
-        <RandomValue values={[4, 5, 6]} />
-        <p>Your action count is: {actionCount}</p>
-
         {quizAnswer === null && (
           <Quiz id={id} onSubmit={handleSubmit} onStateChange={handleStateChange} />
         )}

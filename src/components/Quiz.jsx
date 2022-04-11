@@ -8,14 +8,14 @@ const questions = [
     text: "Enter your name",
     id: "name",
   },
-  
+
   {
     text: "Enter your age",
     id: "age",
   },
-  
+
   {
-    text: "Enter your favourite food",
+    text: "Enter your favorite food",
     id: "food",
   },
 
@@ -43,12 +43,12 @@ export function Quiz(props) {
     props.onSubmit(state, props.id);
   };
 
-  const questionsMap = questions.map((question, index) => {
+  const questionsMap = questions.map((question) => {
     return (
       <FreeInputQuestion
-        key={index}
-        id={`freeInputQuestion${index}`}
-        text={question}
+        key={question.id}
+        id={question.id}
+        text={question.text}
         onKeyUp={handleAnswer}
       />
     );

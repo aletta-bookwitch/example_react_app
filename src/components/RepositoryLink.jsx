@@ -10,7 +10,7 @@ export class RepositoryLink extends React.Component {
     return (
       <a
         className="App-link"
-        href="https://github.com/dstrekelj/algebra-example-react-app"
+        href="https://github.com/aletta-bookwitch/example_react_app"
       >
         {this.props.children}
       </a>
